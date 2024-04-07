@@ -1,6 +1,9 @@
 #! /bin/sh
 
-fcitx5 -d
+if command -v fcitx5 &> /dev/null
+then
+    fcitx5 -d
+fi
 picom -b
 slstatus &
 while feh --bg-fill --randomize --recursive ~/.wallpaper;
