@@ -6,7 +6,7 @@ then
 fi
 picom -b
 slstatus &
-while feh --bg-fill --randomize --recursive ~/.wallpaper;
+while feh --bg-fill --randomize --recursive ~/wallpapers;
 do
     sleep 900
 done &
