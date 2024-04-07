@@ -25,8 +25,8 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 # config python virtual environment dir
 export PYVENV=~/Python/venvs
 
-# config PATH
-export PATH=$PATH:~/.zvm/bin:~/.zvm/self
-
 # load cargo environment
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
+
+# config PATH
+export PATH=$PATH:~/.zvm/bin:~/.zvm/self

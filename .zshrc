@@ -35,15 +35,20 @@ bindkey '^[[Z' reverse-menu-complete
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
 
-# load plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+try_source() {
+    test -f "$1" && source "$1"
+}
 
-source $PYVENV/default/bin/activate
+# load plugins
+try_source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+try_source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+try_source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# activate python default environment
+try_source $PYVENV/default/bin/activate
 
 # >>> xmake >>>
-test -f "/home/kewuaa/.xmake/profile" && source "/home/kewuaa/.xmake/profile"
+try_source $HOME/.xmake/profile
 # <<< xmake <<<
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
