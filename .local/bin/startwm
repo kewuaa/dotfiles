@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -ne 1 ] && [ "$1" != "dwm" ] && [ "$1" != "dwl" ]; then
+    echo "Usage: $0 [dwm|dwl]"
+    exit 1
+fi
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
+export GLFW_IM_MODULE=ibus
+export LANGUAGE=zh_CN:en_US
+
+if [ "$1" == "dwm" ]; then
+    startx
+elif [ "$1" == "dwl" ]; then
+    slstatus -s | dwl
+fi
