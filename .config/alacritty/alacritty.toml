@@ -18,7 +18,7 @@ decorations = "Full"
 # \_0.0_ is completely transparent and _1.0_ is opaque.
 #
 # Default: _1.0_
-opacity = 1.0
+opacity = 0.8
 # startup_mode "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 # Startup mode (changes require restart)
 #
@@ -32,13 +32,16 @@ startup_mode = "Windowed"
 # Default: _"None"_
 decorations_theme_variant = "None"
 
+# Allow terminal applications to change Alacritty's window title.
+dynamic_padding = true
+
 [window.dimensions]
 columns = 100
 lines = 30
 
 [colors]
 draw_bold_text_with_bright_colors = true
-transparent_background_colors = true
+transparent_background_colors = false
 
 [colors.primary]
 background = "0x222436"
@@ -73,6 +76,7 @@ index = 17
 color = '0xc53b53'
 
 [font]
+size = 13
 builtin_box_drawing = false
 
 [font.bold]
@@ -105,3 +109,9 @@ key = "q"
 mods = "Control|Shift"
 mode = "~Alt"
 action = "Quit"
+
+[[keyboard.bindings]]
+key = "o"
+mods = "None"
+mode = "Vi"
+action = "Open"
