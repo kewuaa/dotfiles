@@ -1,10 +1,10 @@
 #!/bin/sh
 
 source $HOME/.zshenv
-if command -v python > /dev/null then
-    python -m venv $PYVENV/default
+if command -v python > /dev/null; then
+    [ ! -d $PYVENV/default ] && python -m venv $PYVENV/default
     $PYVENV/default/bin/pip install -U pip setuptools
     $PYVENV/default/bin/pip install pynvim
 fi
 source $HOME/.zshrc
-chmod +x $HOME/.dwm/autostart.sh
+chmod +x $HOME/.local/bin/startwm
