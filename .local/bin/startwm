@@ -14,7 +14,7 @@ export GLFW_IM_MODULE=ibus
 export LANGUAGE=zh_CN:en_US
 
 if [ "$1" == "dwm" ]; then
-    startx
+    exec startx
 elif [ "$1" == "dwl" ]; then
-    slstatus -s | dwl
+    slstatus -s | exec dwl
 fi
