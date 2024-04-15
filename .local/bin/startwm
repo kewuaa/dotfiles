@@ -16,5 +16,5 @@ export LANGUAGE=zh_CN:en_US
 if [ "$1" == "dwm" ]; then
     exec startx
 elif [ "$1" == "dwl" ]; then
-    slstatus -s | exec dwl
+    exec dwl
 fi
