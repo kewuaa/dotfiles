@@ -28,5 +28,5 @@ export PYVENV=~/Python/venvs
 # load cargo environment
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 
-# config PATH
-export PATH=$PATH:~/.zvm/bin:~/.zvm/self
+# config zvm PATH
+! command -v zvm > /dev/null  && export PATH=$PATH:~/.zvm/bin:~/.zvm/self

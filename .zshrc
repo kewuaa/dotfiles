@@ -34,6 +34,7 @@ bindkey '^[[Z' reverse-menu-complete
 # alias
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
+alias python="$PYVENV/default/bin/python"
 
 try_source() {
     test -f "$1" && source "$1"
@@ -43,9 +44,6 @@ try_source() {
 try_source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 try_source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 try_source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# activate python default environment
-try_source $PYVENV/default/bin/activate
 
 # >>> xmake >>>
 try_source $HOME/.xmake/profile
