@@ -35,6 +35,7 @@ bindkey '^[[Z' reverse-menu-complete
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
 alias python="$PYVENV/default/bin/python"
+alias pip="python -m pip"
 
 try_source() {
     test -f "$1" && source "$1"
