@@ -34,12 +34,28 @@ bindkey '^[[Z' reverse-menu-complete
 # alias
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
-alias python="$PYVENV/default/bin/python"
-alias pip="python -m pip"
+alias defaultpy="$PYVENV/default/bin/python"
+
+usepy() {
+    local venv=""
+    if [ $# -eq 0 ]; then
+        venv=".venv/bin/activate"
+    else
+        venv="$PYVENV/$1/bin/activate"
+    fi
+    if [ -f "$venv" ]; then
+        command -v deactivate > /dev/null && deactivate
+        source "$venv"
+    else
+        echo "$venv not exists"
+    fi
+}
 
 try_source() {
     test -f "$1" && source "$1"
 }
+
+usepy default
 
 # load plugins
 try_source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
