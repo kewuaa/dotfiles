@@ -51,6 +51,16 @@ usepy() {
     fi
 }
 
+createpy() {
+    local venv=""
+    if [ $# -eq 0 ]; then
+        venv=".venv"
+    else
+        venv="$PYVENV/$1"
+    fi
+    python -m venv "$venv"
+}
+
 try_source() {
     test -f "$1" && source "$1"
 }
