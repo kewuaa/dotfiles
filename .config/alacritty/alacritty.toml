@@ -109,9 +109,3 @@ key = "q"
 mods = "Control|Shift"
 mode = "~Alt"
 action = "Quit"
-
-[[keyboard.bindings]]
-key = "o"
-mods = "None"
-mode = "Vi"
-action = "Open"
