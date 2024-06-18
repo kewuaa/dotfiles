@@ -65,11 +65,12 @@ try_source() {
     test -f "$1" && source "$1"
 }
 
-usepy default
+[[ -z "$VIRTUAL_ENV" ]] && usepy default
 
 # load plugins
 try_source ~/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 try_source ~/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+try_source ~/.local/share/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> xmake >>>

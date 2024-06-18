@@ -29,4 +29,13 @@ export PYVENV=~/Python/venvs
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 
 # config zvm PATH
-! command -v zvm > /dev/null  && export PATH=$PATH:~/.zvm/bin:~/.zvm/self
+if [[ -d "$HOME/.zvm" ]]; then
+    case ":${PATH}:" in
+        *:"$HOME/.zvm/bin":*)
+            ;;
+        *)
+            # Prepending path in case a system-installed rustc needs to be overridden
+            export PATH="$HOME/.zvm/bin:$HOME/.zvm/self:$PATH"
+            ;;
+    esac
+fi
