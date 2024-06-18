@@ -1,10 +1,32 @@
 #!/bin/sh
 
-source $HOME/.zshenv
-if command -v python > /dev/null; then
-    [ ! -d $PYVENV/default ] && python -m venv $PYVENV/default
-    $PYVENV/default/bin/pip install -U pip setuptools
-    $PYVENV/default/bin/pip install pynvim
+cd "$HOME"
+
+echo "Init submodules"
+yadm submodule set-url .config/nvim "https://github.com/kewuaa/nvim.git"
+yadm submodule update --init --recursive
+yadm submodule set-url .config/nvim "git@github.com:kewuaa/nvim.git"
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:kewuaa/dotfiles.git"
+
+if [[ -f ~/.config/yadm/sparse-checkout ]]; then
+    if [[ ! -f "${YADM_HOOK_REPO}/info/sparse-checkout" ]]; then
+      yadm gitconfig core.sparseCheckout true
+      cat ~/.config/yadm/sparse-checkout > "${YADM_HOOK_REPO}/info/sparse-checkout"
+      yadm checkout --quiet
+    fi
 fi
-source $HOME/.zshrc
+
+#############################################################################
+
+if [ "${SHELL##*/}" = "zsh" ]; then
+    source $HOME/.zshenv
+    if command -v python > /dev/null; then
+        [ ! -d $PYVENV/default ] && python -m venv $PYVENV/default
+        $PYVENV/default/bin/pip install -U pip setuptools
+        $PYVENV/default/bin/pip install pynvim
+    fi
+    source $HOME/.zshrc
+fi
 chmod +x $HOME/.local/bin/startwm
