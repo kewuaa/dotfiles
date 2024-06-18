@@ -68,9 +68,9 @@ try_source() {
 usepy default
 
 # load plugins
-try_source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-try_source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-try_source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+try_source ~/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+try_source ~/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> xmake >>>
 try_source $HOME/.xmake/profile
