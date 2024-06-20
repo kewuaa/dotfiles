@@ -13,3 +13,6 @@
 [submodule ".local/share/zsh/plugins/zsh-completions"]
 	path = .local/share/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".local/share/zsh/plugins/zsh-vi-mode"]
+	path = .local/share/zsh/plugins/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git
