@@ -71,6 +71,7 @@ try_source() {
 try_source ~/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 try_source ~/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 try_source ~/.local/share/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
+try_source ~/.local/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> xmake >>>
