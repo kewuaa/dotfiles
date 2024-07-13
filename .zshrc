@@ -75,7 +75,7 @@ try_source ~/.local/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> xmake >>>
-try_source $HOME/.xmake/profile
+test -f "/home/kewuaa/.xmake/profile" && source "/home/kewuaa/.xmake/profile"
 # <<< xmake <<<
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
