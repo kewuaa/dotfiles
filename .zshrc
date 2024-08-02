@@ -30,6 +30,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # bind key
 bindkey -v
 bindkey '^[[Z' reverse-menu-complete
+bindkey '^l' autosuggest-accept
 
 # alias
 alias ls="ls -lh --color=auto"
@@ -74,9 +75,10 @@ try_source ~/.local/share/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 try_source ~/.local/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# >>> xmake >>>
-test -f "/home/kewuaa/.xmake/profile" && source "/home/kewuaa/.xmake/profile"
-# <<< xmake <<<
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# >>> xmake >>>
+test -f "/home/kewuaa/.xmake/profile" && source "/home/kewuaa/.xmake/profile"
+# <<< xmake <<<
