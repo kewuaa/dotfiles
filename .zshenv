@@ -22,9 +22,6 @@ export PP=/usr/bin/fpc
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
-# config python virtual environment dir
-export PYVENV=~/Python/venvs
-
 # load cargo environment
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 
