@@ -39,3 +39,12 @@ if [[ -d "$HOME/.zvm" ]]; then
             ;;
     esac
 fi
+
+case ":${PATH}:" in
+    *:"$HOME/.local/bin":*)
+        ;;
+    *)
+        # Prepending path in case a system-installed rustc needs to be overridden
+        export PATH="$HOME/.local/bin:$PATH"
+        ;;
+esac
