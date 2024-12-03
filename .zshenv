@@ -5,11 +5,11 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 
 # config proxy
-export proxy_port=20172
-export all_proxy=http://127.0.0.1:$proxy_port
-export http_proxy=http://127.0.0.1:$proxy_port
-export https_proxy=http://127.0.0.1:$proxy_port
-export no_proxy=localhost,127.0.0.1,::1
+# export proxy_port=
+# export all_proxy=http://127.0.0.1:$proxy_port
+# export http_proxy=$all_proxy
+# export https_proxy=$all_proxy
+# export no_proxy=localhost,127.0.0.1,::1
 
 # config fpc environment
 export FPCDIR=/usr/lib/fpc/src
