@@ -16,9 +16,8 @@ export LANGUAGE=zh_CN:en_US
 if [ "$1" == "dwm" ]; then
     exec startx
 elif [ "$1" == "dwl" ]; then
-    export XDG_CURRENT_DESKTOP=dwl
+    # export XDG_CURRENT_DESKTOP=dwl
     exec dwl -s 'sh -c "
-    systemctl --user set-environment XDG_CURRENT_DESKTOP=dwl
     systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=dwl
     "'
