@@ -11,6 +11,8 @@ export EDITOR=nvim
 # export https_proxy=$all_proxy
 # export no_proxy=localhost,127.0.0.1,::1
 
+export CPM_SOURCE_CACHE=~/.cache/CPM
+
 # load cargo environment
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 
