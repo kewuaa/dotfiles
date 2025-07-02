@@ -88,6 +88,7 @@ cmd open &{{
     esac
 }}
 map o :open $f
+map w $cd $fx && $SHELL
 
 # mkdir command. See wiki if you want it to select created dir
 map a :push %mkdir<space>
