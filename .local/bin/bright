@@ -1,0 +1,27 @@
+# !/usr/bin/sh
+# bright
+wobfifo="/tmp/wob.fifo"
+
+bright_parse() {
+    grep 'Current brightness' | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' > $wobfifo;
+}
+
+bright_minus() {
+    brightnessctl set 1%- | bright_parse
+}
+
+bright_plus() {
+    brightnessctl set 1%+ | bright_parse
+}
+
+while [ -n "$1" ]; do
+    case "$1" in
+        --minus)
+            bright_minus
+            ;;
+        --plus)
+            bright_plus
+            ;;
+    esac
+    shift
+done
