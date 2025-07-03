@@ -20,7 +20,7 @@ volume_plus() {
 
 volume_mute() {
     wpctl set-mute "$target" toggle && wpctl get-volume "$target" | \
-        grep MUTED && notify-send "MUTED" || notify-send "CANCEL MUTED"
+        grep MUTED && notify-send "$1: MUTED" || notify-send "$1: CANCEL MUTED"
 }
 
 case "$2" in
