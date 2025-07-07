@@ -1,0 +1,27 @@
+#! /bin/python
+import sys
+import json
+import subprocess
+
+
+if __name__ == "__main__":
+    res = subprocess.run(["wlopm", "--json"], capture_output=True, text=True)
+    if res.returncode != 0:
+        raise RuntimeError(res.stderr)
+    #endif
+    action = "--toggle"
+    if len(sys.argv) > 1:
+        arg = sys.argv[1]
+        if arg == "on":
+            action = "--on"
+        elif arg == "off":
+            action = "--off"
+        else:
+            raise RuntimeError(f"unexpected argument `{arg}`")
+        #endif
+    #endif
+    res = json.loads(res.stdout)
+    for item in res:
+        subprocess.run(["wlopm", action, item['output']])
+    #endfor
+#endif
