@@ -22,11 +22,6 @@ fi
 
 if [ "${SHELL##*/}" = "zsh" ]; then
     source $HOME/.zshenv
-    if command -v python > /dev/null; then
-        [ ! -d $PYVENV/default ] && python -m venv $PYVENV/default
-        $PYVENV/default/bin/pip install -U pip setuptools
-        $PYVENV/default/bin/pip install pynvim
-    fi
     source $HOME/.zshrc
 fi
 chmod +x $HOME/.local/bin/startwm
