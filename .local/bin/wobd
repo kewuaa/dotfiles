@@ -1,10 +1,10 @@
 #! /bin/sh
 WOBFIFO="/tmp/wob.fifo"
-rm -r "$WOBFIFO"
-mkfifo "$WOBFIFO"
-
 if pgrep -f "tail -f $WOBFIFO" > /dev/null; then
     pkill -f "tail -f $WOBFIFO"
 fi
+
+rm -r "$WOBFIFO"
+mkfifo "$WOBFIFO"
 
 tail -f "$WOBFIFO" | wob
