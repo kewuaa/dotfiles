@@ -1,0 +1,14 @@
+#! /bin/sh
+
+wallpaper_dir=$HOME/wallpapers
+
+killall swaybg
+
+while true; do
+    file=$(find $wallpaper_dir -type f | sort -R | head -n 1 | tr -d "\n")
+    swaybg -i $file &
+    pid=$!
+    sleep 900
+    kill $pid 2> /dev/null
+    wait $pid 2> /dev/null
+done
