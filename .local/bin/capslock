@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# universal capslock indicator, bind this script with Caps_Lock key
+grep -q '1' /sys/class/leds/input*::capslock/brightness && \
+    notify-send -r 195 -t 1100 'CapsLock ' || \
+    notify-send -r 195 -t 1100 'CapsLock '
