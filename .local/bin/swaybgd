@@ -1,14 +1,30 @@
 #! /bin/sh
-
 wallpaper_dir=$HOME/wallpapers
+interval=900
 
-killall swaybg
+
+bg_pid=0
+sleep_pid=0
+cleanup() {
+    if [ $bg_pid -gt 0 ]; then
+        kill $gb_pid > /dev/null
+    fi
+    if [ $sleep_pid -gt 0 ]; then
+        kill $sleep_pid > /dev/null
+    fi
+    killall swaybg > /dev/null
+    exit 0
+}
+trap 'cleanup' SIGTERM
+
 
 while true; do
-    file=$(find $wallpaper_dir -type f | sort -R | head -n 1 | tr -d "\n")
+    file=$(find $wallpaper_dir -type f -name "*.jpg" -o -name "*.png" | sort -R | head -n 1 | tr -d "\n")
     swaybg -i $file &
-    pid=$!
-    sleep 900
+    bg_pid=$!
+    sleep $interval &
+    sleep_pid=$!
+    wait $sleep_pid
     kill $pid 2> /dev/null
     wait $pid 2> /dev/null
 done
