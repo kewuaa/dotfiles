@@ -8,8 +8,4 @@ export INPUT_METHOD=fcitx
 export GLFW_IM_MODULE=ibus
 export LANGUAGE=zh_CN:en_US
 
-export XDG_CURRENT_DESKTOP=river
-systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=dwl
-
 exec river
