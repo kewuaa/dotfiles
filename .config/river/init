@@ -208,8 +208,10 @@ systemctl --user restart xdg-desktop-portal
 mako &
 fcitx5 &
 foot --server &
-gammastep -O 5000 &
 $HOME/.local/bin/wobd &
+if ! pgrep "gammastep" > /dev/null; then
+    gammastep -O 5000 &
+fi
 if ! pgrep "swaybgd"  > /dev/null; then
     $HOME/.local/bin/swaybgd &
 fi
