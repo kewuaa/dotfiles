@@ -51,6 +51,7 @@ riverctl rule-add -app-id "wechat" tags $((1 << 2))
 riverctl rule-add -title "*微信*" tags float
 riverctl rule-add -title "*微信*" tags $((1 << 2))
 riverctl rule-add -app-id "virt-manager" float
+riverctl rule-add -app-id "stalonetray" float
 
 ####################################################################################################
 # mapping
