@@ -3,7 +3,6 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 # River will send the process group of the init executable SIGTERM on exit.
-
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 font="FiraCode Nerd Font"
