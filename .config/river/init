@@ -18,8 +18,9 @@ sele_border="ffc777ff"
 layout=rivercarro
 
 all_tags=$(((1 << 32) - 1))
+scratch_tag=$((1 << 30))
 sticky_tag=$((1 << 31))
-all_but_sticky_tags=$(($all_tags ^ $sticky_tag))
+all_tags=($all_tags ^ $scratch_tag ^ $sticky_tag)
 
 audio_script="$HOME/.local/bin/audio"
 bright_script="$HOME/.local/bin/bright"
@@ -109,7 +110,11 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 riverctl map normal Super S toggle-view-tags $sticky_tag
-riverctl spawn-tagmask $all_but_sticky_tags
+
+riverctl map normal Super D toggle-focused-tags $scratch_tag
+riverctl map normal Super+Shift D set-view-tags $scratch_tag
+
+riverctl spawn-tagmask $all_tags
 
 for i in $(seq 1 9)
 do
