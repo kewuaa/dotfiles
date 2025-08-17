@@ -17,10 +17,9 @@ sele_border="ffc777ff"
 
 layout=rivercarro
 
-all_tags=$(((1 << 32) - 1))
 scratch_tag=$((1 << 30))
 sticky_tag=$((1 << 31))
-all_tags=($all_tags ^ $scratch_tag ^ $sticky_tag)
+all_tags=$(( ((1 << 32) - 1) ^ scratch_tag ^ sticky_tag ))
 
 audio_script="$HOME/.local/bin/audio"
 bright_script="$HOME/.local/bin/bright"
