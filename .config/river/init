@@ -15,7 +15,14 @@ sele_fg="444a73ff"
 sele_bg="c8d3f5d0"
 sele_border="ffc777ff"
 
-layout=rivercarro
+main_ratio=0.55
+inner_gaps=6
+outer_gaps=6
+if command -v rivercarro > /dev/null; then
+    layout=rivercarro
+else
+    layout=rivertile
+fi
 
 scratch_tag=$((1 << 30))
 sticky_tag=$((1 << 31))
@@ -253,8 +260,8 @@ killall rivercarro rivertile
 if [ "$layout" == "rivercarro" ]; then
     riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
     riverctl map normal Super Space send-layout-cmd rivercarro "main-location-cycle left,monocle"
-    rivercarro -main-ratio 0.55 -inner-gaps 6 -outer-gaps 6 -no-smart-gaps -per-tag &
+    rivercarro -main-ratio $main_ratio -inner-gaps $inner_gaps -outer-gaps $outer_gaps -no-smart-gaps -per-tag &
 elif [ "$layout" == "rivertile" ]; then
-    rivertile -main-ratio 0.55 -view-padding 6 -outer-padding 6 &
+    rivertile -main-ratio $main_ratio -view-padding $inner_gaps -outer-padding $outer_gaps &
 fi
 
