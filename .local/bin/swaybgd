@@ -2,6 +2,14 @@
 wallpaper_dir=$HOME/wallpapers
 interval=900
 
+if [ ! -d $wallpaper_dir ]; then
+    notify-send "$wallpaper_dir not exists"
+fi
+if [ "$(find $wallpaper_dir -type f -name "*.jpg" -o -name "*.png" | wc -l)" -eq 0 ]; then
+    notify-send "no wallpapers found in $wallpaper_dir"
+    exit 0
+fi
+
 
 bg_pid=0
 sleep_pid=0
