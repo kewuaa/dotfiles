@@ -9,19 +9,3 @@ yadm submodule set-url .config/nvim "git@github.com:kewuaa/nvim.git"
 
 echo "Updating the yadm repo origin URL"
 yadm remote set-url origin "git@github.com:kewuaa/dotfiles.git"
-
-if [[ -f ~/.config/yadm/sparse-checkout ]]; then
-    if [[ ! -f "${YADM_HOOK_REPO}/info/sparse-checkout" ]]; then
-      yadm gitconfig core.sparseCheckout true
-      cat ~/.config/yadm/sparse-checkout > "${YADM_HOOK_REPO}/info/sparse-checkout"
-      yadm checkout --quiet
-    fi
-fi
-
-#############################################################################
-
-if [ "${SHELL##*/}" = "zsh" ]; then
-    source $HOME/.zshenv
-    source $HOME/.zshrc
-fi
-chmod +x $HOME/.local/bin/startwm
