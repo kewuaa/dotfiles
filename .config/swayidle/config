@@ -1,0 +1,3 @@
+timeout 600 "brightnessctl set 4% -s" resume "brightnessctl -r"
+timeout 900 "waylock -fork-on-lock;toggle_screen off" resume "toggle_screen on"
+before-sleep "waylock"
