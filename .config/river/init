@@ -235,6 +235,9 @@ fi
 if ! pgrep "swayidle" > /dev/null; then
     swayidle &
 fi
+if ! pgrep "idlehack" > /dev/null; then
+    idlehack &
+fi
 if pgrep "dam" > /dev/null; then
     killall dam
 fi
