@@ -58,6 +58,9 @@ riverctl rule-add -title "*微信*" float
 riverctl rule-add -title "*微信*" tags $((1 << 2))
 riverctl rule-add -app-id "virt-manager" float
 riverctl rule-add -app-id "stalonetray" float
+riverctl rule-add -app-id "kazumi" float
+riverctl rule-add -app-id "Zotero" float
+riverctl rule-add -app-id "ONLYOFFICE" float
 
 for i in $(riverctl list-inputs | grep -i touchpad); do
     riverctl input "$i" tap enabled
