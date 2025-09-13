@@ -15,6 +15,12 @@ sele_fg="444a73ff"
 sele_bg="c8d3f5d0"
 sele_border="ffc777ff"
 
+menu_options="-ci -l 9 \
+    -f '${font}, ${menu_font_size}' \
+    -n ${norm_fg} -N ${norm_bg} \
+    -m ${norm_fg} -M ${norm_bg} \
+    -s ${sele_fg} -S ${sele_bg}"
+
 main_ratio=0.55
 inner_gaps=6
 outer_gaps=6
@@ -201,12 +207,7 @@ riverctl map normal Super B spawn "sh -c 'kill -USR1 \$(pgrep dam)'"
 
 riverctl map normal Super+Shift Return spawn "footclient"
 
-riverctl map normal Super P spawn "wmenu-run \
-    -ci -l 9 \
-    -f '${font}, ${menu_font_size}' \
-    -n ${norm_fg} -N ${norm_bg} \
-    -m ${norm_fg} -M ${norm_bg} \
-    -s ${sele_fg} -S ${sele_bg}"
+riverctl map normal Super P spawn "wmenu-run $menu_options"
 
 riverctl map normal Super+Shift L spawn "waylock"
 
