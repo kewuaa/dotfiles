@@ -209,6 +209,8 @@ riverctl map normal Super+Shift Return spawn "footclient"
 
 riverctl map normal Super P spawn "wmenu-run $menu_options"
 
+riverctl map normal Super V spawn "cliphist list | wmenu $menu_options | cliphist decode | wl-copy"
+
 riverctl map normal Super+Shift L spawn "waylock"
 
 riverctl map normal None Print spawn "grim -| wl-copy && notify-send 'Screenshot taken'"
@@ -238,6 +240,9 @@ if ! pgrep "swayidle" > /dev/null; then
 fi
 if ! pgrep "idlehack" > /dev/null; then
     idlehack &
+fi
+if ! pgrep -f "wl-paste --watch cliphist store" > /dev/null; then
+    wl-paste --watch cliphist store &
 fi
 if pgrep "dam" > /dev/null; then
     killall dam
