@@ -272,7 +272,7 @@ riverctl map normal Super+Alt L send-layout-cmd $layout "main-location right"
 riverctl map normal Super+Alt J send-layout-cmd $layout "main-location bottom"
 riverctl map normal Super+Alt H send-layout-cmd $layout "main-location left"
 
-killall rivercarro rivertile
+killall rivercarro rivertile > /dev/null
 if [ "$layout" == "rivercarro" ]; then
     riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
     riverctl map normal Super Space send-layout-cmd rivercarro "main-location-cycle left,monocle"
