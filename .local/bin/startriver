@@ -8,4 +8,4 @@ export INPUT_METHOD=fcitx
 export GLFW_IM_MODULE=ibus
 export LANGUAGE=zh_CN:en_US
 
-exec river
+exec river > /tmp/river.log 2>&1
