@@ -209,7 +209,7 @@ riverctl map normal Super+Shift Return spawn "footclient"
 
 riverctl map normal Super P spawn "wmenu-run $menu_options"
 
-riverctl map normal Super V spawn "cliphist list | wmenu $menu_options | cliphist decode | wl-copy"
+riverctl map normal Super V spawn "cliphist list | wmenu $menu_options | cliphist decode | xargs -I {} wl-copy {}"
 
 riverctl map normal Super+Shift L spawn "waylock"
 
