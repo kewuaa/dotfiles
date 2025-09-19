@@ -53,7 +53,7 @@ riverctl hide-cursor timeout 3000
 riverctl hide-cursor when-typing enabled
 
 riverctl rule-add -app-id "*" ssd
-riverctl rule-add -app-id "Chromium" tags $((1 << 1))
+riverctl rule-add -app-id "chromium" tags $((1 << 1))
 riverctl rule-add -app-id "QQ" float
 riverctl rule-add -app-id "QQ" tags $((1 << 2))
 riverctl rule-add -app-id "wemeetapp" float
