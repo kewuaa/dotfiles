@@ -1,6 +1,9 @@
-# !/usr/bin/sh
-# bright
+#!/usr/bin/sh
 wobfifo="/tmp/wob.fifo"
+
+blocks_reload() {
+    kill -36 $(pgrep -x damblocks)
+}
 
 bright_parse() {
     grep 'Current brightness' | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' > $wobfifo;
@@ -8,10 +11,12 @@ bright_parse() {
 
 bright_minus() {
     brightnessctl set 1%- | bright_parse
+    blocks_reload
 }
 
 bright_plus() {
     brightnessctl set 1%+ | bright_parse
+    blocks_reload
 }
 
 while [ -n "$1" ]; do

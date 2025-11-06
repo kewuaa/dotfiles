@@ -203,7 +203,7 @@ done
 
 riverctl map normal Super+Shift R spawn "$HOME/.config/river/init"
 
-riverctl map normal Super B spawn "sh -c 'kill -USR1 \$(pgrep dam)'"
+riverctl map normal Super B spawn "sh -c 'kill -USR1 \$(pgrep -x dam)'"
 
 riverctl map normal Super+Shift Return spawn "footclient"
 
@@ -248,7 +248,7 @@ fi
 if pgrep "dam" > /dev/null; then
     killall dam
 fi
-sh -c "slstatus -s | dam \
+sh -c "damblocks | dam \
     -f '${font}:size=${font_size}' \
     -nb ${norm_bg} -nf ${norm_fg} \
     -sb ${sele_bg} -sf ${sele_fg}" &
