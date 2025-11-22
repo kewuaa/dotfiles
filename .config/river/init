@@ -218,6 +218,8 @@ riverctl map normal Super+Shift L spawn "wayland_lock"
 riverctl map normal None Print spawn "grim -| wl-copy && notify-send 'Screenshot taken'"
 riverctl map normal Super+Shift S spawn "sh -c 'sleep 0.2; slurp | xargs -I {} grim -g {} -| wl-copy'"
 
+riverctl map normal Super+Shift K spawn "if pgrep -x wshowkeys > /dev/null; then killall wshowkeys; else wshowkeys -b ${norm_bg} -f ${norm_fg} -F '${font} 60' -a bottom -m 60; fi"
+
 riverctl map normal Super E spawn "footclient lf"
 
 ####################################################################################################
