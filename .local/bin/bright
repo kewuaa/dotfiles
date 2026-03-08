@@ -2,7 +2,7 @@
 wobfifo="/tmp/wob.fifo"
 
 blocks_reload() {
-    kill -36 $(pgrep -x damblocks)
+    kill -36 $(pgrep -x kwmblocks)
 }
 
 bright_parse() {

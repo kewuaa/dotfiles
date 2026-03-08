@@ -7,7 +7,7 @@ wobfifo="/tmp/wob.fifo"
 [ "$1" = "source" ] && target="@DEFAULT_AUDIO_SOURCE@"
 
 blocks_reload() {
-    local pid="$(pgrep -x damblocks)"
+    local pid="$(pgrep -x kwmblocks)"
     [ "$1" = "sink"  ] && kill -34 "$pid";
     [ "$1" = "source" ] && kill -35 "$pid";
     [ "$1" = "all" ] && kill -34 "$pid" && kill -35 "$pid";
