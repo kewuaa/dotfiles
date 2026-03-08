@@ -1,0 +1,35 @@
+#!/bin/sh
+
+font="FiraCode Nerd Font"
+font_size=15
+menu_font_size=20
+norm_fg="828bb8ff"
+norm_bg="1b1d2bd0"
+norm_border="828bb8ff"
+sele_fg="444a73ff"
+sele_bg="c8d3f5d0"
+sele_border="ffc777ff"
+
+MEW_PARAMS=(
+    "-i"
+    "-c"
+    "-bw 5"
+    "-l 9"
+    "-f \"$font:size=$menu_font_size\""
+    "-nb $norm_bg"
+    "-nf $norm_fg"
+    "-sb $sele_bg"
+    "-sf $sele_fg"
+)
+
+if [ "$1" = "run" ]; then
+    TARGET_CMD="mew-run"
+else
+    TARGET_CMD="mew"
+fi
+
+FINAL_CMD="$TARGET_CMD ${MEW_PARAMS[*]}"
+
+# echo "=== run：$FINAL_CMD ==="
+
+eval $FINAL_CMD
