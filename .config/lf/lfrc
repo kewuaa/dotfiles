@@ -1,7 +1,5 @@
 # enable icons
 set icons
-# enable sixel
-set sixel
 # set previewer
 set previewer ~/.local/bin/scope
 # enabel relativenumber
