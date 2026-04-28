@@ -13,19 +13,18 @@ sele_border="ffc777ff"
 MEW_PARAMS=(
     "-i"
     "-c"
-    "-bw 5"
     "-l 9"
-    "-f \"$font:size=$menu_font_size\""
-    "-nb $norm_bg"
-    "-nf $norm_fg"
-    "-sb $sele_bg"
-    "-sf $sele_fg"
+    "-f \"$font, $menu_font_size\""
+    "-N $norm_bg"
+    "-n $norm_fg"
+    "-S $sele_bg"
+    "-s $sele_fg"
 )
 
 if [ "$1" = "run" ]; then
-    TARGET_CMD="mew-run"
+    TARGET_CMD="wmenu-run"
 else
-    TARGET_CMD="mew"
+    TARGET_CMD="wmenu"
 fi
 
 FINAL_CMD="$TARGET_CMD ${MEW_PARAMS[*]}"
