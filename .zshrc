@@ -50,3 +50,11 @@ try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# clashctl START
+# 加载 clashctl 命令
+try_source /home/kewuaa/clashctl/scripts/cmd/clashctl.sh
+# 新开 shell 时自动开启代理环境
+watch_proxy
+# clashctl END
