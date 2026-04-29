@@ -35,6 +35,16 @@ bindkey '^[[Z' reverse-menu-complete
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
 
+chains() {
+    http_proxy=""  \
+    https_proxy="" \
+    all_proxy=""   \
+    HTTP_PROXY=""  \
+    HTTPS_PROXY="" \
+    ALL_PROXY=""   \
+    proxychains4 $*
+}
+
 try_source() {
     test -f "$1" && source "$1"
 }
