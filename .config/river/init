@@ -1,5 +1,7 @@
 #!/bin/sh
 
+pipewire &
+
 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 
 exec kwm
