@@ -1,3 +1,24 @@
+chains() {
+    http_proxy=""  \
+    https_proxy="" \
+    all_proxy=""   \
+    HTTP_PROXY=""  \
+    HTTPS_PROXY="" \
+    ALL_PROXY=""   \
+    proxychains4 $*
+}
+
+try_source() {
+    test -f "$1" && source "$1"
+}
+
+# clashctl START
+# 加载 clashctl 命令
+try_source /home/kewuaa/clashctl/scripts/cmd/clashctl.sh
+# 新开 shell 时自动开启代理环境
+watch_proxy
+# clashctl END
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -35,20 +56,6 @@ bindkey '^[[Z' reverse-menu-complete
 alias ls="ls -lh --color=auto"
 alias codeshot="silicon --from-clipboard --to-clipboard --font 'FiraCode Nerd Font; Noto Sans'"
 
-chains() {
-    http_proxy=""  \
-    https_proxy="" \
-    all_proxy=""   \
-    HTTP_PROXY=""  \
-    HTTPS_PROXY="" \
-    ALL_PROXY=""   \
-    proxychains4 $*
-}
-
-try_source() {
-    test -f "$1" && source "$1"
-}
-
 # load plugins
 try_source ~/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 try_source ~/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -60,11 +67,3 @@ try_source ~/.local/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# clashctl START
-# 加载 clashctl 命令
-try_source /home/kewuaa/clashctl/scripts/cmd/clashctl.sh
-# 新开 shell 时自动开启代理环境
-watch_proxy
-# clashctl END
