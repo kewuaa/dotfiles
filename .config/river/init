@@ -4,4 +4,4 @@ pipewire &
 
 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 
-exec kwm
+exec kwm > /tmp/kwm.log 2>&1
