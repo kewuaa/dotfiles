@@ -2,18 +2,21 @@
 
 sec=0
 proc_num=$(nproc)
-fifo_file="/tmp/kwm-status.fifo"
 
-if [ -n "$1" ]; then
-    fifo_file="$1"
-fi
+case "$1" in
+    --fifo)
+        mode="fifo"
+        ;;
+    --xsetroot)
+        mode="xsetroot"
+        ;;
+    *)
+        mode="stdin"
+        ;;
+esac
 
-if [ ! -p "$fifo_file" ]; then
-    if ! mkfifo "$fifo_file"; then
-        echo "create FIFO file $fifo_file failed"
-        exit 1
-    fi
-fi
+DAMBLOCKS_FIFO="${XDG_RUNTIME_DIR}/kwm-status.fifo"
+[ ! -p "$DAMBLOCKS_FIFO" ] && (rm -f "$DAMBLOCKS_FIFO"; mkfifo "$DAMBLOCKS_FIFO")
 
 update_time () {
     local icon=""
@@ -46,19 +49,21 @@ update_bluetooth() {
 }
 
 update_volume() {
-    local text=$(amixer get Master | tail -1)
-    local status=$(echo $text | grep -oE '\[on\]|\[off\]')
-    local level=$(echo $text | grep -oE '[0-9]+%')
-    [ "$status" == "[on]" ] && icon=" " || icon=" "
-    volume="${icon}${level}"
+    local text=$(wpctl get-volume @DEFAULT_SINK@ | tail -1)
+    local status=$(echo $text | grep -oE '\[MUTED\]')
+    local level=$(echo $text | grep -oE '[0-9].[0-9]+')
+    level=$(awk "BEGIN { printf $level * 100 }")
+    [ "$status" != "[MUTED]" ] && icon=" " || icon=" "
+    volume="${icon}${level}%"
 }
 
 update_microphone() {
-    local text=$(amixer get Capture | tail -1)
-    local status=$(echo $text | grep -oE '\[on\]|\[off\]')
-    local level=$(echo $text | grep -oE '[0-9]+%')
-    [ "$status" == "[on]" ] && icon="" || icon=""
-    microphone="${icon}${level}"
+    local text=$(wpctl get-volume @DEFAULT_SOURCE@ | tail -1)
+    local status=$(echo $text | grep -oE '\[MUTED\]')
+    local level=$(echo $text | grep -oE '[0-9].[0-9]+')
+    level=$(awk "BEGIN { printf $level * 100 }")
+    [ "$status" != "[MUTED]" ] && icon="" || icon=""
+    microphone="${icon}${level}%"
 }
 
 update_brightness() {
@@ -169,7 +174,19 @@ display () {
     local delimiter_home="$delimiter_color[^#!"
     local delimiter_end="$delimiter_color]^#!"
     local separator="$delimiter_color][^#!"
-    printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+    local status="${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+
+    case "$mode" in
+        fifo)
+            printf "%s" "$status" > "$DAMBLOCKS_FIFO"
+            ;;
+        xsetroot)
+            xsetroot -name "$status" >/dev/null 2>&1
+            ;;
+        stdin)
+            printf "%s" "$status"
+            ;;
+    esac
 }
 
 while true
@@ -192,4 +209,4 @@ do
         sec=$((sec + 1))
     }
     sleep 1 & wait
-done > $fifo_file
+done
